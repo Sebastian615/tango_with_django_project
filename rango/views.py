@@ -29,7 +29,7 @@ def index(request):
 
 def about(request):
     # context_dict = {'boldmessage': 'Crunchy, creamy, cookie, candy, cupcake!'}
-    return render(request, 'rango/about.html')
+    return render(request, 'rango/about.html', {})
 
 def show_category(request, category_name_slug):
     context_dict = {}
@@ -58,6 +58,7 @@ def show_category(request, category_name_slug):
 
     # Go render the response and return it to the client.
     return render(request, 'rango/category.html', context=context_dict)
+
 def add_category(request):
     form = CategoryForm()
     if request.method =='POST':
@@ -96,4 +97,4 @@ def add_page(request,category_name_slug):
             else:
                 print(form.errors)
     context_dict = {'form': form, 'category': category}
-    return render(request, 'rango/add_page.html', context=context_dict) 
+    return render(request, 'rango/add_page.html', context=context_dict)
